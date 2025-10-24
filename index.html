@@ -39,7 +39,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      padding: 20px;
+      padding: 15px;
       position: relative;
       overflow-x: hidden;
       line-height: 1.6;
@@ -52,7 +52,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 300px;
+      height: 200px;
       background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange), var(--accent-cyan));
       opacity: 0.15;
       transform: skewY(-5deg);
@@ -65,22 +65,23 @@
       background: rgba(255,255,255,0.05);
       border-radius: 20px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-      padding: 30px;
+      padding: 25px;
       border: 1px solid rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
     }
     
     header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
       margin-bottom: 25px;
+      gap: 15px;
     }
     
     .logo {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       border-radius: 15px;
       background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));
       display: flex;
@@ -89,98 +90,128 @@
       font-weight: 800;
       color: var(--bg-1);
       box-shadow: 0 8px 20px rgba(255,193,7,0.4);
-      font-size: 24px;
+      font-size: 22px;
       text-transform: uppercase;
-      flex-shrink: 0;
     }
     
     .header-content {
-      flex: 1;
-      min-width: 200px;
+      width: 100%;
     }
     
     h1 {
-      font-size: clamp(20px, 4vw, 28px);
-      margin: 0 0 5px 0;
+      font-size: 22px;
+      margin: 0 0 8px 0;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       line-height: 1.2;
     }
     
     p.lead {
       margin: 0;
       color: var(--muted);
-      font-size: clamp(13px, 2.5vw, 15px);
+      font-size: 14px;
       font-weight: 500;
+      line-height: 1.5;
     }
     
     .header-info {
-      text-align: right;
-      flex-shrink: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
     
     .grid {
       display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 25px;
-      margin-top: 25px;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 20px;
     }
     
-    @media (max-width: 968px) {
+    @media (min-width: 768px) {
       .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 340px;
       }
       .sidebar {
         order: 2;
       }
-      .header-info {
+      header {
+        flex-direction: row;
         text-align: left;
-        width: 100%;
+        align-items: flex-start;
+      }
+      .header-content {
+        flex: 1;
+      }
+      .header-info {
+        align-items: flex-end;
+        text-align: right;
+      }
+      .logo {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+      p.lead {
+        font-size: 15px;
       }
     }
     
-    @media (max-width: 480px) {
+    @media (min-width: 1024px) {
+      h1 {
+        font-size: 28px;
+      }
       body {
-        padding: 10px;
+        padding: 40px 20px;
       }
       .container {
-        padding: 20px;
-        border-radius: 15px;
-      }
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      .header-info {
-        text-align: center;
+        padding: 30px;
       }
     }
     
     .card {
       background: var(--card);
-      padding: 25px;
+      padding: 20px;
       border-radius: 15px;
       border: 1px solid var(--glass);
       backdrop-filter: blur(5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
     
+    /* Mobile-friendly table */
+    .table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -5px;
+      padding: 0 5px;
+    }
+    
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: clamp(13px, 2.5vw, 15px);
+      font-size: 14px;
+      min-width: 300px;
     }
     
     th, td {
-      padding: 12px 15px;
+      padding: 10px 12px;
       text-align: left;
       word-wrap: break-word;
     }
     
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
       th, td {
         padding: 8px 10px;
+        font-size: 13px;
+      }
+      .table-container {
+        margin: 0 -10px;
+        padding: 0 10px;
       }
     }
     
@@ -189,7 +220,8 @@
       font-weight: 700;
       border-bottom: 2px solid var(--accent-yellow);
       text-transform: uppercase;
-      font-size: clamp(12px, 2.2vw, 14px);
+      font-size: 12px;
+      white-space: nowrap;
     }
     
     tbody tr {
@@ -197,28 +229,30 @@
     }
     
     .note {
-      font-size: clamp(12px, 2.2vw, 14px);
+      font-size: 12px;
       color: var(--muted);
-      margin-top: 12px;
+      margin-top: 10px;
+      line-height: 1.5;
     }
     
     .section-title {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 15px;
+      gap: 10px;
+      margin-bottom: 12px;
     }
     
     .section-title strong {
-      font-size: clamp(16px, 3vw, 18px);
+      font-size: 16px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      line-height: 1.2;
     }
     
     .dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: var(--accent-yellow);
       box-shadow: 0 0 10px rgba(255,193,7,0.5);
@@ -228,12 +262,13 @@
     /* small utilities */
     .muted {
       color: var(--muted);
-      font-size: clamp(12px, 2.2vw, 14px);
+      font-size: 13px;
     }
     
     .price {
       font-weight: 700;
       color: var(--accent-yellow);
+      white-space: nowrap;
     }
     
     .mt-8 {
@@ -256,8 +291,13 @@
     .contact .item strong {
       font-weight: 600;
       text-transform: uppercase;
-      font-size: clamp(12px, 2.2vw, 14px);
+      font-size: 12px;
       flex-shrink: 0;
+      min-width: 60px;
+    }
+    
+    .contact .item span {
+      word-break: break-word;
     }
     
     .cta {
@@ -274,6 +314,7 @@
       letter-spacing: 0.5px;
       transition: transform 0.2s, box-shadow 0.2s;
       width: 100%;
+      font-size: 14px;
     }
     
     .cta:hover {
@@ -284,22 +325,23 @@
     /* ribbons */
     .ribbon {
       display: inline-block;
-      padding: 8px 15px;
+      padding: 6px 12px;
       border-radius: 30px;
       background: rgba(255,255,255,0.1);
       font-weight: 600;
       color: var(--muted);
-      font-size: clamp(11px, 2vw, 13px);
+      font-size: 11px;
       text-transform: uppercase;
     }
     
     footer {
-      margin-top: 25px;
+      margin-top: 20px;
       color: var(--muted);
-      font-size: clamp(11px, 2vw, 14px);
+      font-size: 12px;
       text-align: center;
       padding-top: 15px;
       border-top: 1px solid rgba(255,255,255,0.1);
+      line-height: 1.5;
     }
     
     footer strong {
@@ -310,12 +352,17 @@
     /* Additional styles for energetic look */
     section {
       position: relative;
+      margin-bottom: 20px;
+    }
+    
+    section:last-child {
+      margin-bottom: 0;
     }
     
     section::after {
       content: "";
       position: absolute;
-      bottom: 0;
+      bottom: -10px;
       left: 0;
       width: 100%;
       height: 1px;
@@ -336,12 +383,43 @@
         box-shadow: 0 0 15px rgba(255,193,7,0.7);
       }
     }
+    
+    /* Mobile-specific improvements */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 20px 15px;
+        border-radius: 15px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      p.lead {
+        font-size: 13px;
+      }
+      .card {
+        padding: 15px;
+      }
+      .section-title strong {
+        font-size: 15px;
+      }
+      .contact .item strong {
+        font-size: 11px;
+        min-width: 50px;
+      }
+      .cta {
+        font-size: 13px;
+        padding: 10px 15px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="logo">PR</div>
+      <div class="logo">Ejay</div>
       <div class="header-content">
         <h1>Printing & Signage Price List</h1>
         <p class="lead">Updated price list — includes latest UV DTF tiered pricing. Prices may vary with quantity, mobilization, and installation.</p>
@@ -358,135 +436,153 @@
         <!-- Tarpaulin -->
         <section>
           <div class="section-title"><div class="dot"></div><strong>Tarpaulin Printing</strong></div>
-          <table>
-            <thead>
-              <tr><th>Type</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>UV Print</td><td class="price">₱30 / sq.ft</td></tr>
-              <tr><td>Ecosolvent (High resolution / High quality media)</td><td class="price">₱20 / sq.ft</td></tr>
-              <tr><td>Ecosolvent (Standard)</td><td class="price">₱15 / sq.ft</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>UV Print</td><td class="price">₱30 / sq.ft</td></tr>
+                <tr><td>Ecosolvent (High resolution / High quality media)</td><td class="price">₱20 / sq.ft</td></tr>
+                <tr><td>Ecosolvent (Standard)</td><td class="price">₱15 / sq.ft</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">*Price varies with quantity. Mobilization and installation prices vary.</p>
         </section>
 
         <!-- UV DTF -->
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>UV DTF Printing</strong></div>
-          <table>
-            <thead>
-              <tr><th>Quantity Range</th><th>Price per Meter</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>1 – 10 meters</td><td class="price">₱590 / meter</td></tr>
-              <tr><td>10 – 30 meters</td><td class="price">₱540 / meter</td></tr>
-              <tr><td>30 meters and up</td><td class="price">₱490 / meter</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Quantity Range</th><th>Price per Meter</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1 – 10 meters</td><td class="price">₱590 / meter</td></tr>
+                <tr><td>10 – 30 meters</td><td class="price">₱540 / meter</td></tr>
+                <tr><td>30 meters and up</td><td class="price">₱490 / meter</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">*Prices change depending on material, quantity, and special requirements.</p>
         </section>
 
         <!-- Light boxes -->
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>Acrylic Light Box (Direct UV Print)</strong></div>
-          <table>
-            <thead>
-              <tr><th>Type</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Single Face</td><td class="price">₱1,500 / sq.ft</td></tr>
-              <tr><td>Back-to-Back</td><td class="price">₱1,800 / sq.ft</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Single Face</td><td class="price">₱1,500 / sq.ft</td></tr>
+                <tr><td>Back-to-Back</td><td class="price">₱1,800 / sq.ft</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">*Mobilization and installation prices vary.</p>
         </section>
 
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>Panaflex Light Box (Direct UV Print)</strong></div>
-          <table>
-            <thead>
-              <tr><th>Type</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Single Face</td><td class="price">₱600 / sq.ft</td></tr>
-              <tr><td>Back-to-Back</td><td class="price">₱750 / sq.ft</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Single Face</td><td class="price">₱600 / sq.ft</td></tr>
+                <tr><td>Back-to-Back</td><td class="price">₱750 / sq.ft</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">*Mobilization and installation prices vary.</p>
         </section>
 
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>Panaflex Signage (No Lights)</strong></div>
-          <table>
-            <thead>
-              <tr><th>Type</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Single Face</td><td class="price">₱400 / sq.ft</td></tr>
-              <tr><td>Back-to-Back</td><td class="price">₱550 / sq.ft</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Single Face</td><td class="price">₱400 / sq.ft</td></tr>
+                <tr><td>Back-to-Back</td><td class="price">₱550 / sq.ft</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">*Mobilization and installation prices vary.</p>
         </section>
 
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>Sintra Board (Direct UV Print &amp; Cut)</strong></div>
-          <table>
-            <thead>
-              <tr><th>Description</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Sintra board with direct UV print and cut</td><td class="price">₱120 / sq.ft</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Description</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Sintra board with direct UV print and cut</td><td class="price">₱120 / sq.ft</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">*Price varies with quantity, mobilization, and installation.</p>
         </section>
 
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>Stickers &amp; Decals</strong></div>
-          <table>
-            <thead>
-              <tr><th>Type</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Sticker (Laminated, with cut)</td><td class="price">₱1.00 / sq.inch</td></tr>
-              <tr><td>Sticker (Without laminate, with cut)</td><td class="price">₱0.80 / sq.inch</td></tr>
-              <tr><td>Sticker frosting / Decals (UV print) — with installation</td><td class="price">₱3.00 / sq.inch</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Sticker (Laminated, with cut)</td><td class="price">₱1.00 / sq.inch</td></tr>
+                <tr><td>Sticker (Without laminate, with cut)</td><td class="price">₱0.80 / sq.inch</td></tr>
+                <tr><td>Sticker frosting / Decals (UV print) — with installation</td><td class="price">₱3.00 / sq.inch</td></tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>T-Shirt Printing</strong></div>
-          <table>
-            <thead>
-              <tr><th>Type</th><th>Details</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Cotton Shirt</td><td>DTF Printing (up to A3 size)</td><td class="price">₱250 – ₱280 / pc</td></tr>
-              <tr><td>Dri-Fit Shirt</td><td>DTF or Sublimation (up to A3 size)</td><td class="price">₱270 – ₱300 / pc</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>Details</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Cotton Shirt</td><td>DTF Printing (up to A3 size)</td><td class="price">₱250 – ₱280 / pc</td></tr>
+                <tr><td>Dri-Fit Shirt</td><td>DTF or Sublimation (up to A3 size)</td><td class="price">₱270 – ₱300 / pc</td></tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
-        <section style="margin-top:25px">
+        <section>
           <div class="section-title"><div class="dot"></div><strong>Other Services</strong></div>
-          <table>
-            <thead>
-              <tr><th>Service</th><th>Price</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Layout design</td><td class="price">₱300</td></tr>
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Service</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Layout design</td><td class="price">₱300</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">*All prices subject to change based on quantity (qty), material selection, mobilization and installation requirements. For large orders please request a formal quotation.</p>
         </section>
 
       </main>
 
       <aside class="sidebar card">
-        <h3 style="margin-top:0;margin-bottom:10px; text-transform: uppercase; font-weight: 700; color: var(--accent-yellow);">Quick Contact</h3>
+        <h3 style="margin-top:0;margin-bottom:10px; text-transform: uppercase; font-weight: 700; color: var(--accent-yellow); font-size: 16px;">Quick Contact</h3>
         <div class="contact">
           <div class="item"><strong>Phone:</strong><span class="muted">0917-XXX-XXXX</span></div>
           <div class="item"><strong>Email:</strong><span class="muted">email@company.com</span></div>
@@ -496,14 +592,14 @@
         <a class="cta" href="#" onclick="alert('Contact request sent!')">Request Quote</a>
 
         <div style="margin-top:20px">
-          <h4 style="margin:0 0 10px 0; text-transform: uppercase; font-weight: 600; color: var(--accent-yellow);">Notes</h4>
-          <p class="muted" style="margin:0;font-size:14px">Mobilization and installation prices vary depending on location, access, and order size. Quantity discounts may apply for bulk orders.</p>
+          <h4 style="margin:0 0 10px 0; text-transform: uppercase; font-weight: 600; color: var(--accent-yellow); font-size: 14px;">Notes</h4>
+          <p class="muted" style="margin:0;font-size:13px;line-height:1.5">Mobilization and installation prices vary depending on location, access, and order size. Quantity discounts may apply for bulk orders.</p>
         </div>
       </aside>
     </div>
 
     <footer>
-      <div>Prepared by: <strong>Your Company Name</strong> • Terms: 50% deposit for production on large orders.</div>
+      <div>Prepared by: <strong>Ejay Printing & Advertising</strong> • Terms: 50% deposit for production on large orders.</div>
     </footer>
   </div>
 </body>
