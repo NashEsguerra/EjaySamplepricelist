@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Printing & Signage Price List</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Printing & Signage Price List - Ejay Printing & Advertising</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root{
       --bg-1:#2b1b77; /* deep violet/dark blue */
@@ -16,6 +17,8 @@
       --muted:#e0e0e0;
       --glass: rgba(255,255,255,0.1);
       --max-width:1200px;
+      --success: #4caf50;
+      --info: #2196f3;
       font-family: 'Poppins', sans-serif;
     }
     
@@ -27,6 +30,7 @@
       height: 100%;
       -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+      scroll-behavior: smooth;
     }
     
     body {
@@ -59,6 +63,41 @@
       z-index: -1;
     }
     
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.4;
+      }
+      90% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+    
     .container {
       width: 100%;
       max-width: var(--max-width);
@@ -68,6 +107,18 @@
       padding: 25px;
       border: 1px solid rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     header {
@@ -92,6 +143,11 @@
       box-shadow: 0 8px 20px rgba(255,193,7,0.4);
       font-size: 22px;
       text-transform: uppercase;
+      transition: transform 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: rotate(5deg) scale(1.05);
     }
     
     .header-content {
@@ -121,6 +177,57 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
+    }
+    
+    .search-container {
+      width: 100%;
+      margin-top: 15px;
+      position: relative;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 10px 40px 10px 15px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-yellow);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 0 10px rgba(255,193,7,0.3);
+    }
+    
+    .search-input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--accent-yellow);
+      color: var(--bg-1);
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .search-btn:hover {
+      background: var(--accent-orange);
     }
     
     .grid {
@@ -181,6 +288,12 @@
       border: 1px solid var(--glass);
       backdrop-filter: blur(5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
     }
     
     /* Mobile-friendly table */
@@ -226,6 +339,11 @@
     
     tbody tr {
       border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background-color 0.2s ease;
+    }
+    
+    tbody tr:hover {
+      background-color: rgba(255,255,255,0.05);
     }
     
     .note {
@@ -288,6 +406,12 @@
       align-items: flex-start;
     }
     
+    .contact .item i {
+      color: var(--accent-yellow);
+      width: 20px;
+      text-align: center;
+    }
+    
     .contact .item strong {
       font-weight: 600;
       text-transform: uppercase;
@@ -315,6 +439,8 @@
       transition: transform 0.2s, box-shadow 0.2s;
       width: 100%;
       font-size: 14px;
+      cursor: pointer;
+      border: none;
     }
     
     .cta:hover {
@@ -353,6 +479,12 @@
     section {
       position: relative;
       margin-bottom: 20px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    
+    section.hidden {
+      opacity: 0.3;
     }
     
     section:last-child {
@@ -414,9 +546,211 @@
         padding: 10px 15px;
       }
     }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .modal-content {
+      background: var(--bg-1);
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      animation: modalFadeIn 0.3s ease-out;
+      border: 1px solid var(--glass);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+    
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    
+    .close-modal:hover {
+      color: white;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--accent-yellow);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-yellow);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 0 10px rgba(255,193,7,0.3);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--success);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 2000;
+      max-width: 300px;
+    }
+    
+    .notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .notification i {
+      margin-right: 10px;
+    }
+    
+    .tabs {
+      display: flex;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .tab.active {
+      color: var(--accent-yellow);
+      border-bottom-color: var(--accent-yellow);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .calculator {
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+    
+    .calc-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .calc-row label {
+      flex: 1;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .calc-row input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+    }
+    
+    .calc-result {
+      margin-top: 15px;
+      padding: 10px;
+      background: rgba(255,193,7,0.1);
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      font-size: 16px;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
+  <!-- Animated background particles -->
+  <div class="particles" id="particles"></div>
+  
   <div class="container">
     <header>
       <div class="logo">Ejay</div>
@@ -430,11 +764,16 @@
       </div>
     </header>
 
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search for products or services...">
+      <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+
     <div class="grid">
       <main class="card">
 
         <!-- Tarpaulin -->
-        <section>
+        <section data-category="tarpaulin">
           <div class="section-title"><div class="dot"></div><strong>Tarpaulin Printing</strong></div>
           <div class="table-container">
             <table>
@@ -452,7 +791,7 @@
         </section>
 
         <!-- UV DTF -->
-        <section>
+        <section data-category="uv dtf">
           <div class="section-title"><div class="dot"></div><strong>UV DTF Printing</strong></div>
           <div class="table-container">
             <table>
@@ -470,7 +809,7 @@
         </section>
 
         <!-- Light boxes -->
-        <section>
+        <section data-category="light box">
           <div class="section-title"><div class="dot"></div><strong>Acrylic Light Box (Direct UV Print)</strong></div>
           <div class="table-container">
             <table>
@@ -486,7 +825,7 @@
           <p class="note">*Mobilization and installation prices vary.</p>
         </section>
 
-        <section>
+        <section data-category="light box">
           <div class="section-title"><div class="dot"></div><strong>Panaflex Light Box (Direct UV Print)</strong></div>
           <div class="table-container">
             <table>
@@ -502,7 +841,7 @@
           <p class="note">*Mobilization and installation prices vary.</p>
         </section>
 
-        <section>
+        <section data-category="signage">
           <div class="section-title"><div class="dot"></div><strong>Panaflex Signage (No Lights)</strong></div>
           <div class="table-container">
             <table>
@@ -518,7 +857,7 @@
           <p class="note">*Mobilization and installation prices vary.</p>
         </section>
 
-        <section>
+        <section data-category="sintra board">
           <div class="section-title"><div class="dot"></div><strong>Sintra Board (Direct UV Print &amp; Cut)</strong></div>
           <div class="table-container">
             <table>
@@ -533,7 +872,7 @@
           <p class="note">*Price varies with quantity, mobilization, and installation.</p>
         </section>
 
-        <section>
+        <section data-category="stickers">
           <div class="section-title"><div class="dot"></div><strong>Stickers &amp; Decals</strong></div>
           <div class="table-container">
             <table>
@@ -549,7 +888,7 @@
           </div>
         </section>
 
-        <section>
+        <section data-category="t-shirt">
           <div class="section-title"><div class="dot"></div><strong>T-Shirt Printing</strong></div>
           <div class="table-container">
             <table>
@@ -564,7 +903,7 @@
           </div>
         </section>
 
-        <section>
+        <section data-category="other services">
           <div class="section-title"><div class="dot"></div><strong>Other Services</strong></div>
           <div class="table-container">
             <table>
@@ -579,21 +918,78 @@
           <p class="note">*All prices subject to change based on quantity (qty), material selection, mobilization and installation requirements. For large orders please request a formal quotation.</p>
         </section>
 
+        <div class="no-results" id="noResults" style="display: none;">
+          <i class="fas fa-search"></i>
+          <p>No products or services found matching your search.</p>
+        </div>
+
       </main>
 
       <aside class="sidebar card">
-        <h3 style="margin-top:0;margin-bottom:10px; text-transform: uppercase; font-weight: 700; color: var(--accent-yellow); font-size: 16px;">Quick Contact</h3>
-        <div class="contact">
-          <div class="item"><strong>Phone:</strong><span class="muted">0917-XXX-XXXX</span></div>
-          <div class="item"><strong>Email:</strong><span class="muted">email@company.com</span></div>
-          <div class="item"><strong>Address:</strong><span class="muted">Barangay, City, Province</span></div>
+        <div class="tabs">
+          <div class="tab active" data-tab="contact">Contact</div>
+          <div class="tab" data-tab="calculator">Calculator</div>
         </div>
+        
+        <div class="tab-content active" id="contact">
+          <h3 style="margin-top:0;margin-bottom:10px; text-transform: uppercase; font-weight: 700; color: var(--accent-yellow); font-size: 16px;">Quick Contact</h3>
+          <div class="contact">
+            <div class="item"><i class="fas fa-phone"></i><strong>Phone:</strong><span class="muted">0917-XXX-XXXX</span></div>
+            <div class="item"><i class="fas fa-envelope"></i><strong>Email:</strong><span class="muted">email@company.com</span></div>
+            <div class="item"><i class="fas fa-map-marker-alt"></i><strong>Address:</strong><span class="muted">Barangay, City, Province</span></div>
+          </div>
 
-        <a class="cta" href="#" onclick="alert('Contact request sent!')">Request Quote</a>
+          <button class="cta" id="requestQuoteBtn">Request Quote</button>
 
-        <div style="margin-top:20px">
-          <h4 style="margin:0 0 10px 0; text-transform: uppercase; font-weight: 600; color: var(--accent-yellow); font-size: 14px;">Notes</h4>
-          <p class="muted" style="margin:0;font-size:13px;line-height:1.5">Mobilization and installation prices vary depending on location, access, and order size. Quantity discounts may apply for bulk orders.</p>
+          <div style="margin-top:20px">
+            <h4 style="margin:0 0 10px 0; text-transform: uppercase; font-weight: 600; color: var(--accent-yellow); font-size: 14px;">Notes</h4>
+            <p class="muted" style="margin:0;font-size:13px;line-height:1.5">Mobilization and installation prices vary depending on location, access, and order size. Quantity discounts may apply for bulk orders.</p>
+          </div>
+        </div>
+        
+        <div class="tab-content" id="calculator">
+          <h3 style="margin-top:0;margin-bottom:10px; text-transform: uppercase; font-weight: 700; color: var(--accent-yellow); font-size: 16px;">Price Calculator</h3>
+          <div class="calculator">
+            <div class="form-group">
+              <label for="calcService">Select Service</label>
+              <select id="calcService">
+                <option value="">Choose a service...</option>
+                <option value="tarpaulin-uv">Tarpaulin UV Print (₱30/sq.ft)</option>
+                <option value="tarpaulin-eco-hq">Tarpaulin Ecosolvent High Quality (₱20/sq.ft)</option>
+                <option value="tarpaulin-eco-std">Tarpaulin Ecosolvent Standard (₱15/sq.ft)</option>
+                <option value="uv-dtf-1-10">UV DTF (1-10 meters) (₱590/meter)</option>
+                <option value="uv-dtf-10-30">UV DTF (10-30 meters) (₱540/meter)</option>
+                <option value="uv-dtf-30+">UV DTF (30+ meters) (₱490/meter)</option>
+                <option value="acrylic-single">Acrylic Light Box Single Face (₱1,500/sq.ft)</option>
+                <option value="acrylic-back">Acrylic Light Box Back-to-Back (₱1,800/sq.ft)</option>
+                <option value="panaflex-light-single">Panaflex Light Box Single Face (₱600/sq.ft)</option>
+                <option value="panaflex-light-back">Panaflex Light Box Back-to-Back (₱750/sq.ft)</option>
+                <option value="panaflex-single">Panaflex Signage Single Face (₱400/sq.ft)</option>
+                <option value="panaflex-back">Panaflex Signage Back-to-Back (₱550/sq.ft)</option>
+                <option value="sintra">Sintra Board (₱120/sq.ft)</option>
+                <option value="sticker-lam">Sticker Laminated (₱1.00/sq.inch)</option>
+                <option value="sticker-no-lam">Sticker Without Laminate (₱0.80/sq.inch)</option>
+                <option value="sticker-frost">Sticker Frosting/Decals (₱3.00/sq.inch)</option>
+                <option value="tshirt-cotton">Cotton T-Shirt (₱265/pc avg)</option>
+                <option value="tshirt-dri">Dri-Fit T-Shirt (₱285/pc avg)</option>
+                <option value="layout">Layout Design (₱300)</option>
+              </select>
+            </div>
+            
+            <div class="calc-row">
+              <label for="calcQuantity">Quantity:</label>
+              <input type="number" id="calcQuantity" min="1" value="1">
+            </div>
+            
+            <div class="calc-row">
+              <label for="calcSize">Size (sq.ft or sq.inch):</label>
+              <input type="number" id="calcSize" min="1" value="1">
+            </div>
+            
+            <div class="calc-result" id="calcResult">
+              Total: ₱0
+            </div>
+          </div>
         </div>
       </aside>
     </div>
@@ -602,5 +998,307 @@
       <div>Prepared by: <strong>Ejay Printing & Advertising</strong> • Terms: 50% deposit for production on large orders.</div>
     </footer>
   </div>
+  
+  <!-- Quote Request Modal -->
+  <div class="modal" id="quoteModal">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal">&times;</button>
+      <h2 style="margin-top:0; color: var(--accent-yellow); text-transform: uppercase; font-weight: 700;">Request a Quote</h2>
+      <form id="quoteForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Interested In</label>
+          <select id="service" required>
+            <option value="">Select a service...</option>
+            <option value="tarpaulin">Tarpaulin Printing</option>
+            <option value="uv-dtf">UV DTF Printing</option>
+            <option value="light-box">Light Box</option>
+            <option value="signage">Signage</option>
+            <option value="sintra-board">Sintra Board</option>
+            <option value="stickers">Stickers & Decals</option>
+            <option value="t-shirt">T-Shirt Printing</option>
+            <option value="other">Other Services</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" placeholder="Please describe your project requirements, size, quantity, etc."></textarea>
+        </div>
+        <button type="submit" class="cta">Submit Request</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Notification -->
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notificationText">Your request has been submitted!</span>
+  </div>
+
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 20;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size between 5px and 15px
+        const size = Math.random() * 10 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        
+        // Random animation duration between 10s and 20s
+        const duration = Math.random() * 10 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Initialize particles on page load
+    createParticles();
+    
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab');
+        
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding content
+        tab.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+    
+    // Modal functionality
+    const quoteModal = document.getElementById('quoteModal');
+    const requestQuoteBtn = document.getElementById('requestQuoteBtn');
+    const closeModal = document.getElementById('closeModal');
+    const quoteForm = document.getElementById('quoteForm');
+    const notification = document.getElementById('notification');
+    const notificationText = document.getElementById('notificationText');
+    
+    requestQuoteBtn.addEventListener('click', () => {
+      quoteModal.style.display = 'flex';
+    });
+    
+    closeModal.addEventListener('click', () => {
+      quoteModal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === quoteModal) {
+        quoteModal.style.display = 'none';
+      }
+    });
+    
+    quoteForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+      
+      // Here you would normally send the data to a server
+      // For this demo, we'll just show a notification
+      
+      // Show notification
+      notificationText.textContent = `Thank you ${name}! Your quote request for ${service} has been submitted.`;
+      notification.classList.add('show');
+      
+      // Reset form
+      quoteForm.reset();
+      
+      // Close modal
+      quoteModal.style.display = 'none';
+      
+      // Hide notification after 5 seconds
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 5000);
+    });
+    
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const sections = document.querySelectorAll('section');
+    const noResults = document.getElementById('noResults');
+    
+    function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      let hasResults = false;
+      
+      sections.forEach(section => {
+        const sectionText = section.textContent.toLowerCase();
+        const category = section.getAttribute('data-category');
+        
+        if (searchTerm === '' || sectionText.includes(searchTerm) || (category && category.includes(searchTerm))) {
+          section.classList.remove('hidden');
+          hasResults = true;
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+      
+      if (hasResults) {
+        noResults.style.display = 'none';
+      } else {
+        noResults.style.display = 'block';
+      }
+    }
+    
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      } else {
+        performSearch();
+      }
+    });
+    
+    // Price calculator
+    const calcService = document.getElementById('calcService');
+    const calcQuantity = document.getElementById('calcQuantity');
+    const calcSize = document.getElementById('calcSize');
+    const calcResult = document.getElementById('calcResult');
+    
+    function calculatePrice() {
+      const service = calcService.value;
+      const quantity = parseFloat(calcQuantity.value) || 0;
+      const size = parseFloat(calcSize.value) || 0;
+      
+      if (!service || quantity <= 0 || size <= 0) {
+        calcResult.textContent = 'Total: ₱0';
+        return;
+      }
+      
+      let unitPrice = 0;
+      let unit = '';
+      
+      switch(service) {
+        case 'tarpaulin-uv':
+          unitPrice = 30;
+          unit = 'sq.ft';
+          break;
+        case 'tarpaulin-eco-hq':
+          unitPrice = 20;
+          unit = 'sq.ft';
+          break;
+        case 'tarpaulin-eco-std':
+          unitPrice = 15;
+          unit = 'sq.ft';
+          break;
+        case 'uv-dtf-1-10':
+          unitPrice = 590;
+          unit = 'meter';
+          break;
+        case 'uv-dtf-10-30':
+          unitPrice = 540;
+          unit = 'meter';
+          break;
+        case 'uv-dtf-30+':
+          unitPrice = 490;
+          unit = 'meter';
+          break;
+        case 'acrylic-single':
+          unitPrice = 1500;
+          unit = 'sq.ft';
+          break;
+        case 'acrylic-back':
+          unitPrice = 1800;
+          unit = 'sq.ft';
+          break;
+        case 'panaflex-light-single':
+          unitPrice = 600;
+          unit = 'sq.ft';
+          break;
+        case 'panaflex-light-back':
+          unitPrice = 750;
+          unit = 'sq.ft';
+          break;
+        case 'panaflex-single':
+          unitPrice = 400;
+          unit = 'sq.ft';
+          break;
+        case 'panaflex-back':
+          unitPrice = 550;
+          unit = 'sq.ft';
+          break;
+        case 'sintra':
+          unitPrice = 120;
+          unit = 'sq.ft';
+          break;
+        case 'sticker-lam':
+          unitPrice = 1.00;
+          unit = 'sq.inch';
+          break;
+        case 'sticker-no-lam':
+          unitPrice = 0.80;
+          unit = 'sq.inch';
+          break;
+        case 'sticker-frost':
+          unitPrice = 3.00;
+          unit = 'sq.inch';
+          break;
+        case 'tshirt-cotton':
+          unitPrice = 265;
+          unit = 'pc';
+          break;
+        case 'tshirt-dri':
+          unitPrice = 285;
+          unit = 'pc';
+          break;
+        case 'layout':
+          unitPrice = 300;
+          unit = 'pc';
+          break;
+      }
+      
+      let total = 0;
+      
+      if (service === 'layout') {
+        total = unitPrice;
+      } else if (service === 'tshirt-cotton' || service === 'tshirt-dri') {
+        total = unitPrice * quantity;
+      } else {
+        total = unitPrice * quantity * size;
+      }
+      
+      calcResult.textContent = `Total: ₱${total.toFixed(2)}`;
+    }
+    
+    calcService.addEventListener('change', calculatePrice);
+    calcQuantity.addEventListener('input', calculatePrice);
+    calcSize.addEventListener('input', calculatePrice);
+  </script>
 </body>
 </html>
